@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIS Nexus — Multi-Agent Harness Engineering &amp; Jarvis Command System</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- TOP TELEMETRY HUD HEADER -->
+      <header class="hud-header">
+        <div class="brand-cluster">
+          <div class="brand-glyph" aria-hidden="true">◆</div>
+          <div>
+            <div class="brand-eyebrow">STARLIGHT INTELLIGENCE SYSTEM · SIP-v1.1.1</div>
+            <h1 class="brand-title">SIS NEXUS <span class="brand-sub">// JARVIS HARNESS &amp; MEMORY SUBSTRATE</span></h1>
+          </div>
+        </div>
+
+        <div class="hud-metrics" id="hud-metrics">
+          <div class="hud-pill" data-goto-tab="vaults">
+            <span class="hud-pill-label">6 VAULTS MEMORY</span>
+            <span class="hud-pill-value" id="hud-vault-count">-- entries</span>
+          </div>
+          <div class="hud-pill" data-goto-tab="vaults">
+            <span class="hud-pill-label">EFFECTIVE CONFIDENCE</span>
+            <span class="hud-pill-value accent-aqua" id="hud-avg-conf">--%</span>
+          </div>
+          <div class="hud-pill" data-goto-tab="vaults">
+            <span class="hud-pill-label">CONTRADICTION RADAR</span>
+            <span class="hud-pill-value accent-warn" id="hud-contra-count">--</span>
+          </div>
+          <div class="hud-pill" data-goto-tab="harnesses">
+            <span class="hud-pill-label">COUNCIL &amp; HARNESSES</span>
+            <span class="hud-pill-value accent-violet" id="hud-fleet-status">7 Agents · 6 CLIs</span>
+          </div>
+          <div class="hud-pill" data-goto-tab="content">
+            <span class="hud-pill-label">CONTENT STUDIO</span>
+            <span class="hud-pill-value accent-gold" id="hud-content-count">-- runs</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- PRIMARY WORKSPACE NAVIGATION -->
+      <nav class="workspace-nav" aria-label="Primary Workspaces">
+        <button class="nav-tab active" data-tab="jarvis" id="tab-btn-jarvis">
+          <span class="tab-index">01</span>
+          <span class="tab-label">Jarvis Command Deck</span>
+        </button>
+        <button class="nav-tab" data-tab="harnesses" id="tab-btn-harnesses">
+          <span class="tab-index">02</span>
+          <span class="tab-label">Multi-Agent Harness Studio</span>
+        </button>
+        <button class="nav-tab" data-tab="context" id="tab-btn-context">
+          <span class="tab-index">03</span>
+          <span class="tab-label">Context &amp; Handoff Bridge</span>
+        </button>
+        <button class="nav-tab" data-tab="vaults" id="tab-btn-vaults">
+          <span class="tab-index">04</span>
+          <span class="tab-label">Six Semantic Vaults</span>
+        </button>
+        <button class="nav-tab" data-tab="content" id="tab-btn-content">
+          <span class="tab-index">05</span>
+          <span class="tab-label">Content Production Studio</span>
+        </button>
+      </nav>
+
+      <!-- MAIN WORKSPACE CONTAINER -->
+      <main class="workspace-main">
+        <!-- ========================================================
+             TAB 1: JARVIS COMMAND DECK
+             ======================================================== -->
+        <section class="tab-panel active" id="panel-jarvis">
+          <div class="panel-grid-2col">
+            <!-- Left: Directive Console & Presets -->
+            <div class="card card-elevated">
+              <div class="card-header">
+                <div>
+                  <span class="section-tag">JARVIS-CORE // DIRECTIVE CONSOLE</span>
+                  <h2>Autonomous Multi-Agent Mission Dispatch</h2>
+                </div>
+                <span class="status-badge status-online">COUNCIL READY</span>
+              </div>
+
+              <p class="card-desc">
+                Issue natural-language directives or SIP slash commands. Orchestrator decomposes intent into a typed Task Envelope, recalls BM25 + temporal-ranked memories from the 6 vaults, compiles the target harness Context Pack, and enforces Sentinel Maker/Checker verification.
+              </p>
+
+              <div class="preset-bar">
+                <span class="preset-label">Quick Directives:</span>
+                <button type="button" class="preset-chip" data-directive="/forge Architect a zero-drift multi-agent context bridge across Cursor, Claude Code, and Codex">
+                  /forge Context Bridge
+                </button>
+                <button type="button" class="preset-chip" data-directive="/produce Sovereign Multi-Agent Harness Engineering: Compounding Memory &amp; Maker-Checker Gates">
+                  /produce Technical RFC + Thread
+                </button>
+                <button type="button" class="preset-chip" data-directive="/handoff Transfer active full-stack implementation checkpoint from Cursor to Codex for security verification">
+                  /handoff Cursor → Codex
+                </button>
+                <button type="button" class="preset-chip" data-directive="/audit Scan all 6 semantic vaults for trigram Jaccard polarity contradictions and stale rules">
+                  /audit Vault Contradictions
+                </button>
+                <button type="button" class="preset-chip" data-directive="/recall Retrieve highest-confidence architectural patterns for BM25 retrieval and 90-day confidence decay">
+                  /recall BM25 &amp; Temporal Rules
+                </button>
+              </div>
+
+              <form id="jarvis-directive-form" class="directive-form">
+                <div class="form-row">
+                  <div class="form-group flex-grow">
+                    <label for="jarvis-input">Operator Directive / Slash Command</label>
+                    <textarea
+                      id="jarvis-input"
+                      rows="3"
+                      placeholder="/directive Design and verify a multi-harness workflow..."
+                      required
+                    >/forge Design a unified multi-agent harness workflow with 90-day temporal vault recall and Maker/Checker verification</textarea>
+                  </div>
+                </div>
+                <div class="form-row form-controls-inline">
+                  <div class="form-group">
+                    <label for="jarvis-harness-select">Target Execution Harness</label>
+                    <select id="jarvis-harness-select">
+                      <option value="cursor">Cursor Agent Harness (.cursorrules · 128k)</option>
+                      <option value="claude-code">Claude Code (CLAUDE.md · 200k)</option>
+                      <option value="codex">Codex CLI / Sandbox (AGENTS.md · 192k)</option>
+                      <option value="gemini-cli">Gemini CLI (GEMINI.md · 1M)</option>
+                      <option value="opencode">OpenCode (AGENTS.md · 128k)</option>
+                      <option value="antigravity">Antigravity Surface (AGENTS.md · 1M)</option>
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-primary" id="jarvis-submit-btn">
+                    DISPATCH DIRECTIVE TO COUNCIL
+                  </button>
+                </div>
+              </form>
+
+              <!-- Synthesized Jarvis Output -->
+              <div class="terminal-box" id="jarvis-synthesis-box">
+                <div class="terminal-header">
+                  <span>JARVIS TELEMETRY READOUT</span>
+                  <span class="mono-tag" id="jarvis-receipt-tag">SIP-ATTESTED</span>
+                </div>
+                <pre class="terminal-pre" id="jarvis-synthesis-output">Initializing Jarvis Command Core...</pre>
+              </div>
+            </div>
+
+            <!-- Right: 7-Step Execution Trace & Sentinel Quality Receipt -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <span class="section-tag">EXECUTION PIPELINE // MAKER &amp; CHECKER TRACE</span>
+                  <h2>7-Stage Council Execution &amp; Gate Receipt</h2>
+                </div>
+                <span class="score-badge" id="jarvis-gate-score">Gate: --/100</span>
+              </div>
+
+              <div class="trace-list" id="jarvis-trace-list"></div>
+
+              <div class="subcard" id="jarvis-gate-checks-box">
+                <div class="subcard-title">Sentinel Maker/Checker Quality Gate Audit</div>
+                <div class="gate-checks-grid" id="jarvis-gate-checks"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Row: Grounded Vault Recall & Recent Directives -->
+          <div class="panel-grid-2col mt-16">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <span class="section-tag">VAULT GROUNDING // ACTIVE RECALL</span>
+                  <h2>Memories Recalled for Active Directive</h2>
+                </div>
+              </div>
+              <div class="compact-list" id="jarvis-recalled-list"></div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <span class="section-tag">TASK ENVELOPE LEDGER</span>
+                  <h2>Recent Jarvis Mission Envelopes</h2>
+                </div>
+              </div>
+              <div class="compact-list" id="jarvis-history-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             TAB 2: MULTI-AGENT HARNESS STUDIO
+             ======================================================== -->
+        <section class="tab-panel" id="panel-harnesses">
+          <div class="card mb-16">
+            <div class="card-header">
+              <div>
+                <span class="section-tag">SOVEREIGN COUNCIL // 7 NAMED AGENTS</span>
+                <h2>Multi-Agent Council Architecture (SIP 5 Voice Archetypes)</h2>
+              </div>
+              <span class="mono-tag">MAKER / CHECKER ENFORCED</span>
+            </div>
+            <div class="agents-grid" id="council-agents-grid"></div>
+          </div>
+
+          <div class="panel-grid-2col">
+            <!-- Left: 6 Platform Harness Adapters -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <span class="section-tag">PLATFORM ADAPTERS // 6 EXECUTION SURFACES</span>
+                  <h2>Registered Coding &amp; Autonomous Harnesses</h2>
+                </div>
+              </div>
+              <p class="card-desc">
+                Select any platform adapter below to inspect its token capacity, memory contract file, and compile a live attested configuration grounded in the 6 vaults.
+              </p>
+              <div class="harness-cards-list" id="harness-adapters-list"></div>
+            </div>
+
+            <!-- Right: Live Harness Config & Memory File Compiler -->
+            <div class="card card-elevated">
+              <div class="card-header">
+                <div>
+                  <span class="section-tag">HARNESS ARTIFACT COMPILER</span>
+                  <h2 id="compiler-title">Compiled Contract Preview</h2>
+                </div>
+                <button type="button" class="btn btn-secondary btn-sm" id="copy-harness-btn">
+                  Copy Artifact
+                </button>
+              </div>
+
+              <div class="form-row form-controls-inline mb-12">
+                <div class="form-group flex-grow">
+                  <label for="compiler-focus-input">Mission Focus for Harness Compilation</label>
+                  <input
+                    type="text"
+                    id="compiler-focus-input"
+                    value="Full-stack multi-agent harness orchestration, context continuity, and attested content production"
+                  />
+                </div>
+                <button type="button" class="btn btn-primary" id="recompile-harness-btn">
+                  Compile Harness
+                </button>
+              </div>
+
+              <div class="artifact-meta-bar" id="compiler-meta-bar"></div>
+
+              <div class="code-split">
+                <div>
+                  <div class="code-label" id="compiler-mem-filename">CLAUDE.md / .cursorrules</div>
+                  <pre class="code-block" id="compiler-mem-content"></pre>
+                </div>
+                <div class="mt-12">
+                  <div class="code-label" id="compiler-mcp-filename">MCP Server Registration</div>
+                  <pre class="code-block code-block-sm" id="compiler-mcp-content"></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             TAB 3: CONTEXT & HANDOFF BRIDGE
+             ======================================================== -->
+        <section class="tab-panel" id="panel-context">
+          <div class="panel-grid-2col">
+            <!-- Left: Interactive Context Budget Simulator -->
+            <div class="card card-elevated">
+              <div class="card-header">
+                <div>
+                  <span class="section-tag">CONTEXT WINDOW COMPILER // TOKEN GOVERNANCE</span>
+                  <h2>Dynamic Context Pack &amp; Budget Allocator</h2>
+                </div>
+                <span class="mono-tag" id="ctx-utilization-badge">--% Utilized</span>
+              </div>
+
+              <p class="card-desc">
+                Context window size is not context quality. Configure how Navigator partitions the target harness context budget across protocol rules, active task state, BM25 vault recall, and episodic handoff history.
+              </p>
+
+              <form id="context-budget-form" class="directive-form">
+                <div class="form-row form-controls-inline">
+                  <div class="form-group">
+                    <label for="ctx-harness-select">Target Harness Window</label>
+                    <select id="ctx-harness-select">
+                      <option value="cursor">Cursor (128,000 max · 112,000 usable)</option>
+                      <option value="claude-code">Claude Code (200,000 max · 176,000 usable)</option>
+                      <option value="codex">Codex CLI (192,000 max · 172,000 usable)</option>
+                      <option value="gemini-cli">Gemini CLI (1,000,000 max · 940,000 usable)</option>
+                      <option value="opencode">OpenCode (128,000 max · 112,000 usable)</option>
+                      <option value="antigravity">Antigravity (1,000,000 max · 950,000 usable)</option>
+                    </select>
+                  </div>
+                  <div class="form-group flex-grow">
+                    <label for="ctx-focus-input">Task Query for Semantic Recall</label>
+                    <input
+                      type="text"
+                      id="ctx-focus-input"
+                      value="Multi-agent harness context handoffs, BM25 retrieval, and Maker/Checker verification"
+                    />
+                  </div>
+                </div>
+
+                <div class="sliders-grid">
+                  <div class="slider-item">
+                    <label for="slider-rules">System Rules (<span id="val-rules">18</span>%)</label>
+                    <input type="range" id="slider-rules" min="10" max="40" value="18" />
+                  </div>
+                  <div class="slider-item">
+                    <label for="slider-task">Active Task (<span id="val-task">24</span>%)</label>
+                    <input type="range" id="slider-task" min="10" max="45" value="24" />
+                  </div>
+                  <div class="slider-item">
+                    <label for="slider-vault">Vault Recall (<span id="val-vault">38</span>%)</label>
+                    <input type="range" id="slider-vault" min="15" max="60" value="38" />
+                  </div>
+                  <div class="slider-item">
+                    <label for="slider-history">Episodic History (<span id="val-history">20</span>%)</label>
+                    <input type="range" id="slider-history" min="5" max="40" value="20" />
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-12">
+                  RECOMPILE CONTEXT PACK
+                </button>
+              </form>
+
+              <div class="ctx-sections-list mt-16" id="ctx-sections-list"></div>
+            </div>
+
+            <!-- Right: Cross-Harness Revision-Scoped Handoff Ledger -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <span class="section-tag">RUNTIME BRIDGE // REVISION-BOUND HANDOFFS</span>
+                  <h2>Cross-Harness Handoff Ledger</h2>
+                </div>
+              </div>
+
+              <form id="handoff-create-form" class="directive-form mb-16">
+                <div class="form-row form-controls-inline">
+                  <div class="form-group">
+                    <label for="ho-from">From Harness</label>
+                    <select id="ho-from">
+                      <option value="claude-code">Claude Code</option>
+                      <option value="cursor" selected>Cursor</option>
+                      <option value="codex">Codex</option>
+                      <option value="gemini-cli">Gemini CLI</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="ho-to">To Harness</label>
+                    <select id="ho-to">
+                      <option value="codex" selected>Codex</option>
+                      <option value="claude-code">Claude Code</option>
+                      <option value="cursor">Cursor</option>
+                      <option value="gemini-cli">Gemini CLI</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="ho-sha">Git Revision SHA</label>
+                    <input type="text" id="ho-sha" value="e81f49a" required />
+                  </div>
+                </div>
+                <div class="form-row form-controls-inline">
+                  <div class="form-group flex-grow">
+                    <label for="ho-summary">Handoff Checkpoint Summary</label>
+                    <input
+                      type="text"
+                      id="ho-summary"
+                      placeholder="Describe completed work, modified files, and verification state..."
+                      required
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    MINT HANDOFF PACKET
+                  </button>
+                </div>
+              </form>
+
+              <div class="handoff-list" id="handoff-ledger-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             TAB 4: SIX SEMANTIC VAULTS (SOVEREIGN MEMORY)
+             ======================================================== -->
+        <section class="tab-panel" id="panel-vaults">
+          <!-- 6 Vault Filter Cards -->
+          <div class="vault-selector-grid" id="vault-selector-grid"></div>
+
+          <div class="panel-grid-vaults mt-16">
+            <!-- Left: Search + Entries List -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <span class="section-tag">BM25 + 90-DAY TEMPORAL HALF-LIFE ENGINE</span>
+                  <h2 id="vault-view-title">All Semantic Vault Entries</h2>
+                </div>
+                <button type="button" class="btn btn-secondary btn-sm" id="reset-vault-filter-btn">
+                  Show All 6 Vaults
+                </button>
+              </div>
+
+              <div class="form-row form-controls-inline mb-12">
+                <div class="form-group flex-grow">
+                  <label for="vault-search-input">Hybrid BM25 + Temporal Search</label>
+                  <input
+                    type="text"
+                    id="vault-search-input"
+                    placeholder="Search across vaults (e.g., 'maker-checker', 'bm25', 'jarvis', 'context-budget')..."
+                  />
+                </div>
+                <button type="button" class="btn btn-primary" id="vault-search-btn">
+                  Search Vaults
+                </button>
+              </div>
+
+              <div class="vault-entries-list" id="vault-entries-list"></div>
+            </div>
+
+            <!-- Right Column: Contradiction Radar + Append Memory Form -->
+            <div class="vault-side-stack">
+              <div class="card card-alert">
+                <div class="card-header">
+                  <div>
+                    <span class="section-tag">TRIGRAM JACCARD + POLARITY DETECTOR</span>
+                    <h2>Semantic Contradiction Radar</h2>
+                  </div>
+                  <span class="status-badge status-warn" id="contra-badge-count">0 Detected</span>
+                </div>
+                <p class="card-desc">
+                  Automatically surfaces conflicting directives across vaults using word-trigram Jaccard similarity paired with opposing polarity signals (e.g. <code>always</code> vs <code>never</code>).
+                </p>
+                <div id="contradictions-list" class="contradictions-list"></div>
+              </div>
+
+              <div class="card card-elevated mt-16">
+                <div class="card-header">
+                  <div>
+                    <span class="section-tag">SIS_APPEND_ENTRY // WRITE TO SUBSTRATE</span>
+                    <h2>Commit New Attested Memory</h2>
+                  </div>
+                </div>
+                <form id="append-memory-form" class="directive-form">
+                  <div class="form-row form-controls-inline">
+                    <div class="form-group">
+                      <label for="mem-vault-select">Target Vault</label>
+                      <select id="mem-vault-select">
+                        <option value="strategic">◆ Strategic</option>
+                        <option value="technical" selected>⬡ Technical</option>
+                        <option value="creative">✦ Creative</option>
+                        <option value="operational">▸ Operational</option>
+                        <option value="wisdom">◎ Wisdom</option>
+                        <option value="horizon">↗ Horizon</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="mem-category-select">Category</label>
+                      <select id="mem-category-select">
+                        <option value="pattern">pattern</option>
+                        <option value="architecture">architecture</option>
+                        <option value="decision">decision</option>
+                        <option value="workflow">workflow</option>
+                        <option value="principle">principle</option>
+                        <option value="voice">voice</option>
+                        <option value="vision">vision</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="mem-agent-select">Author Agent</label>
+                      <select id="mem-agent-select">
+                        <option value="architect">Architect</option>
+                        <option value="orchestrator">Orchestrator</option>
+                        <option value="prime">Prime</option>
+                        <option value="navigator">Navigator</option>
+                        <option value="sentinel">Sentinel</option>
+                        <option value="weaver">Weaver</option>
+                        <option value="sage">Sage</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="mem-content-input">Memory Statement (Attested Truth)</label>
+                    <textarea
+                      id="mem-content-input"
+                      rows="3"
+                      placeholder="Enter a high-signal architectural pattern, operational rule, or strategic insight..."
+                      required
+                    ></textarea>
+                  </div>
+                  <div class="form-row form-controls-inline">
+                    <div class="form-group flex-grow">
+                      <label for="mem-tags-input">Tags (comma-separated)</label>
+                      <input
+                        type="text"
+                        id="mem-tags-input"
+                        placeholder="harness, memory, verification"
+                      />
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                      ATTEST &amp; APPEND
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             TAB 5: CONTENT PRODUCTION STUDIO
+             ======================================================== -->
+        <section class="tab-panel" id="panel-content">
+          <div class="panel-grid-content">
+            <!-- Left Sidebar: Content Projects + New Run Form -->
+            <div class="content-sidebar">
+              <div class="card mb-16">
+                <div class="card-header">
+                  <div>
+                    <span class="section-tag">WEAVER + SENTINEL PIPELINE</span>
+                    <h2>Content Production Runs</h2>
+                  </div>
+                </div>
+                <div class="content-projects-list" id="content-projects-list"></div>
+              </div>
+
+              <div class="card card-elevated">
+                <div class="card-header">
+                  <div>
+                    <span class="section-tag">LAUNCH NEW PRODUCTION RUN</span>
+                    <h2>Create Multi-Format Run</h2>
+                  </div>
+                </div>
+                <form id="create-content-form" class="directive-form">
+                  <div class="form-group">
+                    <label for="cp-title">Artifact Title</label>
+                    <input
+                      type="text"
+                      id="cp-title"
+                      placeholder="e.g. Zero-Drift Context Engineering Across 6 Coding Harnesses"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="cp-topic">Core Thesis &amp; Technical Scope</label>
+                    <textarea
+                      id="cp-topic"
+                      rows="2"
+                      placeholder="Describe the engineering thesis, benchmarks, or architectural pattern..."
+                      required
+                    ></textarea>
+                  </div>
+                  <div class="form-row form-controls-inline">
+                    <div class="form-group">
+                      <label for="cp-pillar">Strategic Pillar</label>
+                      <select id="cp-pillar">
+                        <option value="Harness Engineering">Harness Engineering</option>
+                        <option value="Jarvis Systems">Jarvis Systems</option>
+                        <option value="Sovereign Memory">Sovereign Memory</option>
+                        <option value="Agentic Content Ops">Agentic Content Ops</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="cp-harness">Target Harness</label>
+                      <select id="cp-harness">
+                        <option value="cursor">Cursor</option>
+                        <option value="claude-code">Claude Code</option>
+                        <option value="codex">Codex</option>
+                      </select>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary full-width">
+                    COMPILE 4-CHANNEL ARTIFACT PACKAGE
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Right Main Studio: Stage Pipeline, Format Tabs, Preview & Sentinel Scorecard -->
+            <div class="card card-elevated" id="content-studio-detail">
+              <div class="card-header">
+                <div>
+                  <span class="section-tag" id="studio-pillar-tag">HARNESS ENGINEERING</span>
+                  <h2 id="studio-project-title">Select a Content Production Run</h2>
+                </div>
+                <div class="studio-actions">
+                  <button type="button" class="btn btn-secondary btn-sm" id="copy-content-btn">
+                    Copy Active Format
+                  </button>
+                  <button type="button" class="btn btn-primary btn-sm" id="advance-stage-btn">
+                    Advance Stage →
+                  </button>
+                </div>
+              </div>
+
+              <!-- 6-Stage Stepper -->
+              <div class="stage-stepper" id="studio-stage-stepper"></div>
+
+              <!-- Sentinel Editorial Scorecard -->
+              <div class="scorecard-strip" id="studio-scorecard-strip"></div>
+
+              <!-- 4 Format Selector Tabs -->
+              <div class="format-tabs" id="studio-format-tabs">
+                <button type="button" class="format-tab active" data-format="technical-essay">
+                  01 · Technical RFC / Essay
+                </button>
+                <button type="button" class="format-tab" data-format="social-thread">
+                  02 · Executive X / Social Thread
+                </button>
+                <button type="button" class="format-tab" data-format="launch-changelog">
+                  03 · Launch Changelog Brief
+                </button>
+                <button type="button" class="format-tab" data-format="jarvis-briefing-script">
+                  04 · Jarvis Telemetry Script
+                </button>
+              </div>
+
+              <pre class="studio-output-pre" id="studio-output-pre"></pre>
+
+              <div class="subcard mt-12">
+                <div class="subcard-title">Grounded Semantic Vault Citations &amp; Sentinel Notes</div>
+                <div id="studio-research-notes" class="research-notes-list"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast-notification" class="toast-notification" role="status" aria-live="polite"></div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
